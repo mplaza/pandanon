@@ -1,6 +1,6 @@
 class SecretsController < ApplicationController
   def index
-  	@secrets = Secret.find_by_sql('SELECT * FROM secrets WHERE approved=true')
+  	@secrets = Secret.find_by_sql('SELECT * FROM secrets WHERE approved=true').reverse
   end
 
   def compindex
