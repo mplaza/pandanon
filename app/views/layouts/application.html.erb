@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <title>anonie</title>
+  <%= stylesheet_link_tag    'application', media: 'all'  %>
+  <%= javascript_include_tag 'application'  %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<nav class="navbar" role="navigation">
+	<a class="navbar-brand" id = "main" href="/secrets"><%= image_tag "panda_animal.jpg", size: "40x40" %> anonie</a>
+	<ul class="nav navbar-nav navbar-right"> 
+		<% if admin_signed_in? %>
+		<li class="navbar-text">Logged in as <strong><%= current_admin.email %></strong></li>
+		
+		<li class="dropdown">
+	        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
+	        <ul class="dropdown-menu">
+	        	<li><%= link_to "Invite", new_admin_invitation_path %></li>
+			    <li><%= link_to "Logout", destroy_admin_session_path, method: :delete %></li>
+			</ul>
+		</li>
+		<% else %>
+		<li><%= link_to "Admin Sign In", new_admin_session_path %></li>
+		<% end %>
+		<li class="navbar-text">       </li>	
+	</ul>
+
+</nav>
+
+<%= yield %>
+
+</body>
+</html>
