@@ -1,6 +1,6 @@
 class SecretsController < ApplicationController
   def index
-  	@secrets = Secret.find_by_sql('SELECT * FROM secrets WHERE approved=true ORDER BY created_at DESC LIMIT 10')
+  	@secrets = Secret.find_by_sql('SELECT * FROM secrets WHERE approved=true ORDER BY created_at DESC LIMIT 20')
   end
 
   def compindex
