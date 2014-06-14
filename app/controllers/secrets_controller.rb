@@ -31,10 +31,16 @@ class SecretsController < ApplicationController
   def update
   	@secret = Secret.find(params[:id])
   	if @secret.update(secret_params)
-  		redirect_to secrets_path
+  		redirect_to secrets_compindex_path
   	else 
   		render 'edit'
   	end
+  end
+
+  def destroy
+    @secret = Secret.find(params[:id])
+    @secret.destroy
+    redirect_to secrets_compindex_path
   end
 
   def secret_params
