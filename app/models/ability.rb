@@ -6,6 +6,7 @@ class Ability
     if admin
         can :manage, :all
     else
+        can :create, Secret
         can :read, Secret, :approved => true
     end
     # Define abilities for the passed in user here. For example:
