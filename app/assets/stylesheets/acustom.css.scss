@@ -3,3 +3,8 @@
 body{
 	font-family: 'Arimo', sans-serif;
 }
+@media screen and (max-width: 568px) {
+        h4 {
+    font-size:30px;
+    }
+}
