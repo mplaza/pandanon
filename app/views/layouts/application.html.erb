@@ -5,16 +5,15 @@
   <title>anonie</title>
   <%= stylesheet_link_tag    'application', media: 'all'  %>
   <%= javascript_include_tag 'application'  %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"%>
+  <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <nav class="navbar" role="navigation">
-	<div class = "containter-fluid">
 	<a class="navbar-brand" id = "main" href="/secrets"><%= image_tag "panda_animal.jpg", size: "40x40" %> anonie</a>
 	<ul class="nav navbar-nav navbar-right"> 
 		<% if admin_signed_in? %>
-		<li class="navbar-text ">Logged in as admin</li>
+		<li class="navbar-text">Logged in as <strong><%= current_admin.email %></strong></li>
 		
 		<li class="dropdown">
 	        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
@@ -30,7 +29,7 @@
 		<% end %>
 		<li class="navbar-text">       </li>	
 	</ul>
-</div>
+
 </nav>
 
 <%= yield %>
