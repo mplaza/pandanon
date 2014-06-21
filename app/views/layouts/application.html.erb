@@ -10,10 +10,11 @@
 </head>
 <body>
 <nav class="navbar" role="navigation">
+	<div class = "containter-fluid">
 	<a class="navbar-brand" id = "main" href="/secrets"><%= image_tag "panda_animal.jpg", size: "40x40" %> anonie</a>
 	<ul class="nav navbar-nav navbar-right"> 
 		<% if admin_signed_in? %>
-		<li class="navbar-text">Logged in as <strong><%= current_admin.email %></strong></li>
+		<li class="navbar-text ">Logged in as admin</li>
 		
 		<li class="dropdown">
 	        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
@@ -29,7 +30,7 @@
 		<% end %>
 		<li class="navbar-text">       </li>	
 	</ul>
-
+</div>
 </nav>
 
 <%= yield %>

@@ -7,7 +7,7 @@ class Ability
         can :manage, :all
     else
         can :create, Secret
-        can :read, Secret, :approved => true
+        can :read, Secret
     end
     # Define abilities for the passed in user here. For example:
     #
