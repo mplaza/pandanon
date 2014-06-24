@@ -14,10 +14,13 @@ class SecretsController < ApplicationController
 
   def new 
   	@secret = Secret.new
+    @lat_lng = cookies[:lat_lng]
   end
 
   def create
+    @lat_lng = cookies[:lat_lng]
   	@secret = Secret.new(secret_params)
+    @secret.locdata =  @lat_lng
   	if @secret.save(secret_params)
   		redirect_to secrets_path
   	else
@@ -45,6 +48,6 @@ class SecretsController < ApplicationController
   end
 
   def secret_params
-    params.require(:secret).permit(:rumor, :approved )
+    params.require(:secret).permit(:rumor, :approved, :locdata )
 	end
 end
