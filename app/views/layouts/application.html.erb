@@ -10,6 +10,14 @@
   <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+<script>
+  navigator.geolocation.getCurrentPosition(function(position){
+  	var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+  	document.cookie = "lat_lng=" + escape(cookie_val);
+  });
+</script>
+
 <nav class="navbar" role="navigation">
 	<a class="navbar-brand" id = "main" href="/secrets"><%= image_tag "panda_animal.jpg", size: "40x40" %> anonie</a>
 	<ul class="nav navbar-nav navbar-right"> 
