@@ -1,7 +1,7 @@
 class SecretsController < ApplicationController
   load_and_authorize_resource
   def index
-  	@secrets = Secret.find_by_sql('SELECT * FROM secrets ORDER BY created_at DESC LIMIT 40')
+  	@secrets = Secret.find_by_sql('SELECT * FROM secrets WHERE approved = true ORDER BY created_at DESC LIMIT 40')
   end
 
   def compindex
