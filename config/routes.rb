@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 get 'secrets/compindex', to: 'secrets#compindex'
-resources :secrets
+resources :secrets do
+      member do
+        post 'upvote'
+        post 'downvote'
+      end
+end
 
 root "secrets#index"
 

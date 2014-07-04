@@ -1,7 +1,7 @@
 class SecretsController < ApplicationController
   load_and_authorize_resource
   def index
-  	@secrets = Secret.find_by_sql('SELECT * FROM secrets WHERE approved = true ORDER BY created_at DESC LIMIT 5')
+  	@secrets = Secret.find_by_sql('SELECT * FROM secrets ORDER BY created_at DESC')
   end
 
   def compindex
@@ -43,9 +43,28 @@ class SecretsController < ApplicationController
   def destroy
     @secret = Secret.find(params[:id])
     @secret.destroy
-    redirect_to secrets_compindex_path
+    redirect_to secrets_path
   end
 
+  def upvote
+    @secret = Secret.find(params[:id])
+    @secretvote = @secret.secretvotes.build
+    @secretvote.upvote = 1
+    @secretvote.save
+    redirect_to secrets_path
+  end
+
+  def downvote
+    @secret = Secret.find(params[:id])
+    @secretvote = @secret.secretvotes.build
+    @secretvote.downvote = 1
+    @secretvote.save
+    redirect_to secrets_path
+  end
+
+  def secretvote_params
+    params.require(:secretvote).permit(:secret_id, :upvote, :downvote)
+  end
   def secret_params
     params.require(:secret).permit(:rumor, :approved, :locdata)
 	end
